@@ -20,7 +20,7 @@ python run.py
 В папке frontend - приложение на реакте.
 Для запуска нужно выполнить:
 ```
-cd frontent
+cd frontend
 npm install
 
 # Команда, которая собирает статику и кладет её в папку /static сервера
