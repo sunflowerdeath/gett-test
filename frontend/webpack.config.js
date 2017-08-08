@@ -2,7 +2,8 @@ const webpack = require('webpack')
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-var DEBUG = process.env.NODE_ENV !== 'production'
+let DEBUG = process.env.NODE_ENV !== 'production'
+let WATCH = process.env.NODE_WATCH !== 'true'
 
 let plugins = [
 	new HtmlWebpackPlugin({
@@ -19,9 +20,9 @@ module.exports = {
 	entry: './src/index.js',
 
 	output: {
-		path: path.resolve(__dirname, '..', 'static'),
+		path: path.resolve(__dirname, '..', 'gett_test', 'static'),
 		filename: 'bundle.js',
-		// publicPath: /assets/, // string
+		publicPath: DEBUG ? '' : '/static/'
 	},
 
 	module: {
@@ -46,7 +47,7 @@ module.exports = {
 		],
 	},
 
-	devtool: DEBUG ? 'source-map' : false,
+	devtool: (DEBUG || WATCH) ? 'source-map' : false,
 
 	resolve: {
 		alias: {

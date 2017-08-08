@@ -1,6 +1,7 @@
 from flask import Response, json
 import gevent
 from gevent.queue import Queue
+from flask import request
 
 from gett_test import app
 from gett_test.db import Task, Session
@@ -15,20 +16,29 @@ def task_to_dict(task):
         'description': task.description
     }
 
-@app.route('/')
+@app.route('/tasks')
+def index():
+    return app.send_static_file('index.html')
+
+@app.route('/tasks', methods=['POST'])
 def create_task():
     session = Session()
-    task = Task(name='Task', priority=1, description='Description')
+    task_json = request.json
+    task = Task(
+        name=task_json['name'],
+        priority=task_json['priority'],
+        description=task_json['description']
+    )
     session.add(task)
     session.commit()
     msg = json.dumps(task_to_dict(task))
     def notify():
-        for sub in subscriptions[:]:
+        for sub in subscriptions:
             sub.put(msg)
     gevent.spawn(notify)
     return 'OK'
 
-@app.route('/tasks')
+@app.route('/tasks/get')
 def get_tasks():
     session = Session()
     tasks = session.query(Task).all()
@@ -41,16 +51,15 @@ def subscribe():
         subscriptions.append(q)
         try:
             while True:
-                result = q.get()
-                msg = 'event: test\n' + \
+                msg = 'event: task\n' + \
                     'data: %s\n' % str(q.get()) + \
-                    '\n\n'
+                    '\n'
                 yield msg
         except GeneratorExit:
             subscriptions.remove(q)
 
     return Response(gen(), mimetype='text/event-stream')
 
-@app.route('/static/<path:path>')
-def static_files(path):
-    return app.send_static_file('index.html')
+#  @app.route('/static/<path:path>')
+#  def static_files(path):
+    #  return app.send_static_file('index.html')

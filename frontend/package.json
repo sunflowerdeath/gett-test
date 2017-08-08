@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --progress --host=0.0.0.0",
-    "build": "NODE_ENV=production webpack -p --progress"
+    "build": "NODE_ENV=production webpack -p --progress",
+	"watch": "NODE_ENV=production NODE_WATCH=true webpack --watch --progress"
   },
   "author": "sunflowerdeath",
   "license": "ISC",
