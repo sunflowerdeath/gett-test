@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+	</head>
+	<body>
+		Hello
+		<script type="text/javascript">
+			var evtSrc = new EventSource('/subscribe')
+			evtSrc.addEventListener("test", function(e) {
+			    console.log(e)
+			}, false)
+         </script>
+	</body>
+</html>
