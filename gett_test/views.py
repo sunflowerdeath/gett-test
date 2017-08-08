@@ -1,10 +1,9 @@
+from flask import Response, json
 import gevent
 from gevent.queue import Queue
 
 from gett_test import app
-from gett_test.db import engine, Task, Session
-
-from flask import Response, json
+from gett_test.db import Task, Session
 
 subscriptions = []
 
