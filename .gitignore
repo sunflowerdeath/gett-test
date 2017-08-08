@@ -17,6 +17,7 @@ __pycache__/
 pyvenv.cfg
 .venv
 pip-selfcheck.json
+share/
 
 # node
 node_modules
