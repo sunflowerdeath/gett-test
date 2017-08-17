@@ -20,7 +20,7 @@ module.exports = {
 	entry: './src/index.js',
 
 	output: {
-		path: path.resolve(__dirname, '..', 'gett_test', 'static'),
+		path: path.resolve(__dirname, '..', 'gett_test2', 'static'),
 		filename: 'bundle.js',
 		publicPath: DEBUG ? '' : '/static/'
 	},

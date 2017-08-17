@@ -1,4 +1,5 @@
 import 'whatwg-fetch'
+import io from 'socket.io-client'
 
 export default {
 	getTasks() {
@@ -25,11 +26,10 @@ export default {
 	},
 
 	subscribe(callback) {
-		var evtSrc = new EventSource('/subscribe')
-		evtSrc.addEventListener('task', (e) => {
-			let task = JSON.parse(e.data)
-			callback(task)
-		}, false)
+		let socket = io('/')
+		socket.on('create-task', (task) => {
+			callback(JSON.parse(task))
+		})
 	}
 }
 

@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server --progress --host=0.0.0.0",
     "build": "NODE_ENV=production webpack -p --progress",
-	"watch": "NODE_ENV=production NODE_WATCH=true webpack --watch --progress"
+    "watch": "NODE_ENV=production NODE_WATCH=true webpack --watch --progress"
   },
   "author": "sunflowerdeath",
   "license": "ISC",
@@ -16,6 +16,7 @@
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-tap-event-plugin": "^2.0.1",
+    "socket.io-client": "^2.0.3",
     "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {

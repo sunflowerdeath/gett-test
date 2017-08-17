@@ -10,7 +10,7 @@ import {
 
 export default class Tasks extends React.Component {
 	render() {
-		let sortedTasks = this.props.data.sort((a, b) => a.priority < b.priority)
+		let sortedTasks = this.props.data.sort((a, b) => b.priority - a.priority)
 		let taskElems = []
 		for (let task of sortedTasks) {
 			taskElems.push(<Task data={task} key={task.id} />)

@@ -31,11 +31,8 @@ def create_task():
     )
     session.add(task)
     session.commit()
-    msg = json.dumps(task_to_dict(task))
-    def notify():
-        for sub in subscriptions:
-            sub.put(msg)
-    gevent.spawn(notify)
+    for sub in subscriptions:
+        sub.put(json.dumps(task_to_dict(task)))
     return 'OK'
 
 @app.route('/tasks/get')
