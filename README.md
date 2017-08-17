@@ -1,3 +1,15 @@
+Вторая версия в папке `gett_test2`, запуcкать также.
+
+## Что я переделал
+
+1. Использовал Flask-SQLAlchemy для работы с ORM
+2. Заменил Server-sent events на Websockets, с использованием Flask-SocketIO
+3. Добавил requirements.txt, теперь зависимости можно установить одной командой `pip install -r requirements.txt`
+4. Улучшил структуру приложения, так чтобы все импорты были вверху файла
+5. Исправил сортировку задач на клиенте
+
+## Old
+
 Сервер использует flask, gevent и sqlalchemy
 Я их устанавливал в virtualenv
 

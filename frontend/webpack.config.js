@@ -3,7 +3,7 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 let DEBUG = process.env.NODE_ENV !== 'production'
-let WATCH = process.env.NODE_WATCH !== 'true'
+let WATCH = process.env.NODE_WATCH === 'true'
 
 let plugins = [
 	new HtmlWebpackPlugin({
