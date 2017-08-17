@@ -1,6 +1,6 @@
 from flask import json, request
 
-from gett_test2 import app
+from gett_test2.app import app
 from gett_test2.extensions.db import db
 from gett_test2.extensions.socketio import socketio
 from gett_test2.models import Task
